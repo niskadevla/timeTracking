@@ -1,0 +1,100 @@
+:root {
+  font-size: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.title {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  padding-bottom: 5rem;
+}
+
+.wrap {
+  flex: 0 1 50%;
+  width: 50%;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 1px dotted #000;
+}
+
+.table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 2px solid #000;
+}
+
+.table td {
+  font-size: 1rem;
+  padding: 0.2rem;
+  border: 1px solid #000;
+}
+
+.table th,
+.table thead td,
+tfoot {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.5rem;
+
+}
+
+.table thead {
+  position: sticky;
+  top: 1.8rem;
+  left: 0;
+  background-color: #cbffa2;
+}
+
+.table thead td {
+  position: relative;
+  border: 2px solid #000;
+}
+
+.table thead td + td::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -2px;
+  height: 100%;
+  width: 1px;
+  background-color: #000;
+}
+
+.weekend {
+  background-color: #ff759f;
+}
+
+.common-day {
+  background-color: #eee;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.error {
+  background-color: #ff0000;
+}
+
+.total-time {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 2rem;
+  padding: 1rem;
+  text-align: center;
+  background-color: #91e900;
+}
