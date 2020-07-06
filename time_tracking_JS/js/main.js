@@ -171,7 +171,10 @@ function parseData(data) {
 function parseSingleDate(str) {
   let starts = str.split('\n') //Array of computer running [String]
   starts = removeEmpty(starts);
-  starts = starts.map(s => new Date(s)); //Array of computer running [Object (Dates)]
+  starts = starts.map(s => new Date(s.trim()
+                                      .slice(3)
+                                      .trim())); //Skip day of week
+                                                //Array of computer running [Object (Dates)]
 
   return starts;
 }
@@ -191,15 +194,16 @@ function parseEndsData(str) {
 function parseWifiData(str) {
   let starts = str.split('\n') //Array of computer running [String]
   starts = removeEmpty(starts);
-  starts = starts.map(s => new Date( removeEmpty(s.split(' '))
-                                                  .slice(1)
+  starts = starts.map(s => new Date( removeEmpty(s.trim()
+                                                  .split(' '))
+                                                  .slice(2)
                                                   .join(' ') )); //Array of computer running [Object (Dates)]
 
   return starts;
 }
 
 function isSameDate(date1, date2) {
-  return (
+  return date2 && (
      date1.getFullYear() === date2.getFullYear() &&
      date1.getMonth() === date2.getMonth() &&
      date1.getDate() === date2.getDate()
@@ -289,6 +293,7 @@ function getDataAfterCompare(data) {
         //Если не найдет енда, чтоб не было undefined, то присвоим старт
         //Соответственно в HTML таблице кол-во отработанных минут за день = ноль
         let newEnd = getSameDate(date1, data[names[i]].allEndsTwo) || newStart;
+        console.log('i = ', i, ') newStart = ', newStart, ' | newEnd = ', newEnd);
 
         //Если старта нет, то делаем так, чтоб в таблице кол-во минут = 0
         //(newStart - newEnd == 0)
